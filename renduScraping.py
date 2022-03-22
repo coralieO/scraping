@@ -39,13 +39,14 @@ Content['title']= listtitle
 #legende
 
 wikitable = classprincipale.find(class_='wikitable')
-wikitable = wikitable.tbody
+wikitable = wikitable.find('tbody')
 wikitable = wikitable.find_all('tr')
+i = 0
 for row in wikitable:
     column= row.find_all('td')
-    
-    
-    print(column)
+    for i in column:
+        column= column
+        print(column)
 
 
 #rows = rows.find('tr')
