@@ -33,9 +33,52 @@ Content['ContentTitle']= leagecontentTitle
 contentlist = toc.ul.get_text().replace('\n',' ')
 Content['contentlist']= contentlist
 
-#List of Available Champions
+#title List of Available Champions
 listtitle = classprincipale.find(class_='mw-headline').get_text()
-Content['title']
-print(listtitle)
-print (En_tete,Content )
+Content['title']= listtitle
+#legende
 
+wikitable = classprincipale.find(class_='wikitable')
+wikitable = wikitable.tbody
+wikitable = wikitable.find_all('tr')
+for row in wikitable:
+    column= row.find_all('td')
+    
+    
+    print(column)
+
+
+#rows = rows.find('tr')
+
+    
+
+print (En_tete,'\n',Content )
+
+#List of Available Champions
+List = {}
+lac = classprincipale.find(class_='article-table')
+rows = lac.find_all('tr')
+for row in rows:
+    column= row.get_text().strip().replace('\n',' ').split(' ')
+    column = [x for x in column if x != '']
+    print(column)
+    if len(column) == 5:
+     column = [column[0]+ ' ' +column[1] ]
+    if len(column) == 6:
+     column = [column[0]+ ' ' +column[1] + ' ' + column[2] ]
+    if len(column) == 7:
+     column = [column[0]+ ' ' +column[1] + ' ' + column[2] ]
+    elif len(column) == 8:
+        column = [column[0]+ ' ' +column[1] + ' ' + column[2] ]
+    elif len(column) == 9:
+        column = [column[0]+ ' ' +column[1] + ' ' + column[2]+ ' ' + column[3]]
+    elif len(column) == 10:
+        column = [column[0]+ ' ' +column[1] + ' ' + column[2]+ ' ' + column[3] ]
+    elif len(column) == 11:
+        column = [column[0]+ ' ' +column[1] + ' ' + column[2]+ ' ' + column[3]+'' +column[4] ]
+    elif len(column) == 12:
+        column = [column[0]+ ' ' +column[1] + ' ' + column[2]+ ' ' + column[3]+'' +column[4]+ ' ' + column[5] ]
+    
+    print(column)
+        #List['column'] = column
+        #print(List)
